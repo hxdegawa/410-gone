@@ -1,0 +1,11 @@
+.vue-typer {
+  .custom.caret {
+    display: none;
+  }
+}
+
+.with-caret {
+  .custom.caret {
+    display: inline-block;
+  }
+}

@@ -14,6 +14,10 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/icon?family=Material+Icons',
+      },
     ],
   },
 
@@ -21,7 +25,7 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [{ src: '~/plugins/vue-typer/vue-typer.js', ssr: false }],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -49,6 +53,7 @@ export default {
       '~/assets/scss/_variable.scss',
       '~/assets/scss/_global.scss',
       '~/assets/scss/_mixin.scss',
+      '~/assets/scss/_extension.scss',
     ],
   },
 

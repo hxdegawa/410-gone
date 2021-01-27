@@ -2,12 +2,11 @@ html,
 body {
   margin: 0;
   font-size: 14px;
-  line-height: 30px;
+  font-family: 'Roboto', sans-serif;
 
   *:not(.material-icons) {
     box-sizing: border-box;
     letter-spacing: 1px;
-    font-family: 'Roboto', sans-serif;
   }
 
   p,
