@@ -8,15 +8,33 @@
 
 <script lang="ts">
 import { Vue, Component, Provide } from 'nuxt-property-decorator'
+import { Mutation } from 'vuex-class'
 
 @Component({})
-export default class IntroAnimator extends Vue {
+export default class WarningAnimation extends Vue {
+  @Mutation('IntroConfirmation/confirmIntroWarning')
+  confirmIntroWarning!: () => void
+
+  @Mutation('IntroConfirmation/rejectIntroWarning')
+  rejectIntroWarning!: () => void
+
   @Provide() selectionVisible = false
 
   mounted() {
     setTimeout(() => {
       this.selectionVisible = true
     }, 8500)
+
+    window.addEventListener('keydown', (e) => {
+      switch (e.key) {
+        case 'y':
+          this.confirmIntroWarning()
+          break
+        case 'n':
+          this.rejectIntroWarning()
+          break
+      }
+    })
   }
 
   get typerSetting1() {
@@ -28,9 +46,10 @@ export default class IntroAnimator extends Vue {
       repeat: 0,
     }
   }
+
   get typerSetting2() {
     return {
-      text: 'Proceed attack?: Y / N',
+      text: 'Forcibly connect?: Y / N',
       eraseOnComplete: false,
       preTypeDelay: 8500,
       typeDelay: 40,
@@ -43,7 +62,6 @@ export default class IntroAnimator extends Vue {
 <style lang="scss" scoped>
 .intro {
   display: block;
-  transform: translateY(20px);
 
   &__warn {
     display: flex;
