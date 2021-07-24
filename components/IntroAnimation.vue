@@ -1,10 +1,12 @@
 <template lang="pug">
-.intro-animation
-  .intro-animation__status-code
-    h1: vue-typer(text="410" v-bind="vueTyperSetting" :preTypeDelay="1500") 
-    p: vue-typer(text="- Gone?" v-bind="vueTyperSetting" :preTypeDelay="2500")
-  .intro-animation__system
-    warning-animation
+client-only
+  .wrapper
+    .intro-animation
+      .status-code
+          h1: vue-typer(text="410" v-bind="vueTyperSetting" :preTypeDelay="1500") 
+          p: vue-typer(text="- Gone?" v-bind="vueTyperSetting" :preTypeDelay="2500")
+      .system
+        warning-animation
 </template>
 
 <script lang="ts">
@@ -29,29 +31,42 @@ export default class IntroAnimation extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.intro-animation {
-  width: 451px;
-  height: 140px;
+.wrapper {
+  position: fixed;
+  height: calc(var(--vh, 1vh) * 100);
+  width: 100%;
+  background-color: $color-white;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &__status-code {
-    display: flex;
-    flex-direction: row;
-    align-items: baseline;
-    margin-bottom: 20px;
-
-    h1,
-    p {
-      font-family: 'Share Tech Mono', monospace;
-    }
-
-    h1 {
-      font-size: 4rem;
-    }
-
-    p {
-      position: relative;
-      margin-left: 30px;
-      font-size: 1rem;
+  .intro-animation {
+    width: 480px;
+    height: 140px;
+  
+    .status-code {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      margin-bottom: 20px;
+  
+      h1,
+      p {
+        font-family: 'Share Tech Mono', monospace;
+      }
+  
+      h1 {
+        font-size: 4rem;
+      }
+  
+      p {
+        position: relative;
+        margin-left: 30px;
+        font-size: 1rem;
+      }
     }
   }
 }

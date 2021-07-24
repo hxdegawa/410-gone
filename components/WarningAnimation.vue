@@ -1,9 +1,9 @@
 <template lang="pug">
   .intro
-    .intro__warn
-      i.intro__warn__icon.material-icons warning
-      p.intro__warn__message: vue-typer(v-bind="typerSetting1")
-    p.intro__command(v-show="selectionVisible"): vue-typer.with-caret(v-bind="typerSetting2")
+    .warn
+      i.icon.material-icons warning
+      p.message: vue-typer(v-bind="typerSetting1")
+    p.command(v-show="selectionVisible"): vue-typer.with-caret(v-bind="typerSetting2")
 </template>
 
 <script lang="ts">
@@ -39,7 +39,7 @@ export default class WarningAnimation extends Vue {
 
   get typerSetting1() {
     return {
-      text: 'A fatal vulnerability has found on this website.',
+      text: 'An unidentified backdoor has found on this website.',
       eraseOnComplete: false,
       preTypeDelay: 6000,
       typeDelay: 40,
@@ -49,7 +49,7 @@ export default class WarningAnimation extends Vue {
 
   get typerSetting2() {
     return {
-      text: 'Forcibly connect?: Y / N',
+      text: 'Do you want to connect?: Y / N',
       eraseOnComplete: false,
       preTypeDelay: 8500,
       typeDelay: 40,
@@ -63,13 +63,13 @@ export default class WarningAnimation extends Vue {
 .intro {
   display: block;
 
-  &__warn {
+  .warn {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin-bottom: 10px;
 
-    &__icon {
+    .icon {
       display: inline-block;
       width: 30px;
       line-height: 30px;
@@ -80,13 +80,13 @@ export default class WarningAnimation extends Vue {
       animation: blink step-start 0.2s 4.5s 4 forwards;
     }
 
-    &__message {
+    .message {
       margin-left: 10px;
       font-family: 'Share Tech Mono', monospace;
     }
   }
 
-  &__command {
+  .command {
     text-align: right;
     font-family: 'Share Tech Mono', monospace;
   }
